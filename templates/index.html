@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
 </head>
 <body>
-    <div class="bg-gradient-to-tr from-gray-700 via-gray-900 to-black">
+    <div class="bg-gradient-to-r from-gray-700 via-gray-900 to-black">
         <div>
-            <nav class=" shadow-gray-300 w-100 px-10 md:px-auto sticky font-serif" >
+            <nav class=" shadow-gray-300 w-100 px-10 md:px-auto sticky " >
                 <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
                     <!-- Logo -->
                     <div class="text-indigo-500 md:order-1">
@@ -29,7 +29,7 @@
                             <li class="md:px-4 md:py-2 text-indigo-500"><a href="#">Home</a></li>
                             <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Dashboard">Dashboard</a></li>
                             <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Host">Host</a></li>
-                            <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Book">Book</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-indigo-600 "><a href="../templates/book.html">Book</a></li>
                             <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../About">About</a></li>
                         </ul>
                     </div>
@@ -48,31 +48,41 @@
 
         <div>
             <div class=" flex">
-                <div class=" pl-16 pt-28 text-6xl font-bold font-serif leading-relaxed text-white">
+                <div class=" pl-16 pt-28 text-6xl font-bold  leading-relaxed text-white">
                     Welcome to the <span class=" text-7xl" style="color: rgb(99 102 241);">DEMA</span>
-                    <div class=" text-lg"> 
-                        ━  <span class=" text-indigo-500 text-2xl">D</span>ecentralized <span class=" text-indigo-500 text-2xl">E</span>vent <span class=" text-indigo-500 text-2xl">M</span>anagement <span class=" text-indigo-500 text-2xl">A</span>pplication
+                    <div class=" text-lg items-center justify-center"> 
+                        <span>"Introducing our <span style="color: rgb(99 102 241);" >Innovative Platform</span> 
+                             that empowers hosts to <span style="color: rgb(99 102 241);">Effortlessly </span> <br>
+                             <span style="color: rgb(99 102 241);">create </span> and <span style="color: rgb(99 102 241);" >manage</span> events, while providing 
+                             users with a <span style="color: rgb(99 102 241);"> direct </span> and <span style="color: rgb(99 102 241);">secure way</span> to <br>
+                             book tickets through <span style="color: rgb(99 102 241);">Our Decentralized 
+                              Application (dApp)</span>. By eliminating <br>
+                              intermediaries, we are committed to 
+                              eradicating <span style="color: rgb(99 102 241);"> the black ticket market </span> <br> 
+                               and ensuring a <span style="color: rgb(99 102 241);">transparent, trustworthy,
+                                and convenient experience</span> for both event <br>
+                                <span style="color: rgb(99 102 241);"> Hosts and Attendees</span>"</span>
+                         <!-- {% comment %} <span class=" text-indigo-500 text-2xl">D</span>ecentralized <span class=" text-indigo-500 text-2xl">E</span>vent <span class=" text-indigo-500 text-2xl">M</span>anagement <span class=" text-indigo-500 text-2xl">A</span>pplication {% endcomment %} -->
                     </div>
-                    <div class="font-serif text-2xl pt-12">
-                        This platform allows to book tickets for the events without any frauding done and have a safe transaction.
+                    <div class=" text-2xl pt-12">
+                        This platform allows to <span style="color: rgb(99 102 241);">Book Tickets</span> for the events without any frauding done and have a <span style="color: rgb(99 102 241);">safe transaction</span>
                     </div>
                 </div>
-                <img class=" w-1/2 pl-8" src="https://tome.app/manic-af1/untitled-tome-cllrtrh8901gqo65rvixkrnh9" alt="">
             </div>
         </div>
 
-        <div class=" pt-6 font-serif pl-16 text-white">
-            <div class=" text-center underline text-6xl pb-5">
+        <div class=" pt-6 font-extrabold pl-16 text-white">
+            <div class=" text-center pt-10 text-5xl uppercase pb-5">
                 The main motive of the Ticket3 are:
             </div>
         </div>
 
-        <div class=" pt-6 pl-10 pb-14 flex gap-5">
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class=" pt-6 pl-10 pb-14 flex justify-center gap-5">
+            <div class="max-w-sm justify-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Reduction of Black Tickect</h5>
                     </a>
@@ -89,7 +99,7 @@
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ticket Ownership</h5>
                     </a>
@@ -106,7 +116,7 @@
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5" >
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sell Your Ticket in Our Platform</h5>
                     </a>
@@ -121,12 +131,12 @@
                 </div>
             </div>
         </div>
-        <div class=" pl-10 pb-14 flex gap-5">
+        <div class=" pl-10 pb-14 flex justify-center gap-5">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5" >
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Reduction of Black Tickect</h5>
                     </a>
@@ -143,7 +153,7 @@
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5" >
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ticket Ownership</h5>
                     </a>
@@ -160,7 +170,7 @@
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
-                <div class="p-5" style="background-image: url(https://img.freepik.com/premium-photo/brown-cardboard-boxes-craft-paper-table_88281-3807.jpg); background-size: cover; background-position: center;">
+                <div class="p-5" >
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sell Your Ticket in Our Platform</h5>
                     </a>
