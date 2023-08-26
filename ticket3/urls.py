@@ -27,4 +27,5 @@ urlpatterns = [
     path('Book/',views.book, name='Book'),
     path('About/',views.about, name='About'),
     path('Booking/',views.booking, name='Booking'),
+    
 ]
