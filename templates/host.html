@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Host</title>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+    </head>
+<body>
+    <div class="bg-gradient-to-tr from-gray-700 via-gray-900 to-black">
+    <div>
+        <nav class=" shadow-gray-300 w-100 px-10 md:px-auto sticky font-serif" >
+            <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+                <!-- Logo -->
+                <div class="text-indigo-500 md:order-1">
+                    <!-- Heroicon - Chip Outline -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                </div>
+                <div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
+                    <ul class="flex font-semibold justify-between text-white">
+                        <!-- Active Link = text-indigo-500
+                        Inactive Link = hover:text-indigo-500 -->
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../index">Home</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Dashboard">Dashboard</a></li>
+                        <li class="md:px-4 md:py-2 text-indigo-500"><a href="#">Host</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Book">Book</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../About">About</a></li>
+                    </ul>
+                </div>
+                <div class="order-2 md:order-3">
+                    <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-gray-50 rounded-xl flex items-center gap-2">
+                        <!-- Heroicons - Login Solid -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Connect Wallet</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class=" underline text-indigo-500">
+        <h1 class=" text-5xl text-white text-center pt-6 font-serif">Host</h1>
+    </div>
+
+    {% comment %} start form {% endcomment %}
+    
+    <form class=" pt-24">
+        <div class=" pl-44">
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="text" name="EventName" id="EventName" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="EventName" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Event Name</label>
+        </div>
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="text" name="description" id="description" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="description" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Description</label>
+        </div>
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="date" name="date" id="date" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="date" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Date</label>
+        </div>
+        </div>
+        <div class=" pl-44">
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="text" name="location" id="location" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="location" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Location</label>
+        </div>
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="number" name="Seat" id="Seat" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="Seat" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-5">Available Seats</label>
+        </div>
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="number" name="Seat" id="Seat" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="Seat" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-5">Price Per Ticket</label>
+        </div>
+        </div>
+        <div class=" pl-44">
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Host</button>
+        </div>
+    </form>
+  
+    {% comment %} end form {% endcomment %}
+
+    <div class=" text-white text-center pt-28 text-4xl underline">
+        Hosted Events
+    </div>
+    
+    <!-- Start of the Table -->
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-20">
+        <!-- Search Bar Start -->
+        <form>   
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative ml-24">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="block w-11/12 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Your Hosted Events" required>
+            </div>
+        </form>
+        <!-- Search Bar End -->
+        <table class=" ml-36 w-9/12 text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs uppercase dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Event name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Category
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                        Web3 Conference
+                    </th>
+                    <td class="px-2 py-4">
+                        02/07/2023
+                    </td>
+                    <td class="px-6 py-4">
+                        Hosted
+                    </td>
+                    <td class="px-6 py-4">
+                        $2999
+                    </td>
+                <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                        Zero Knowledge (ZK) Conference
+                    </th>
+                    <td class="px-2 py-4">
+                        08/07/2023
+                    </td>
+                    <td class="px-6 py-4">
+                        Hosted
+                    </td>
+                    <td class="px-6 py-4">
+                        $1999
+                    </td>
+                <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                        Neo Hackathon
+                    </th>
+                    <td class="px-2 py-4">
+                        31/07/2023
+                    </td>
+                    <td class="px-6 py-4">
+                        Hosted
+                    </td>
+                    <td class="px-6 py-4">
+                        $4999
+                    </td>
+                <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                        Hackverse 2.0
+                    </th>
+                    <td class="px-2 py-4">
+                        08/08/2023
+                    </td>
+                    <td class="px-6 py-4">
+                        Hosted
+                    </td>
+                    <td class="px-6 py-4">
+                        $0.5
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <!-- End of the Table -->
+    <div class=" pt-6">
+
+    </div>
+</div>
+{% include 'components/footer.html' %}
+</body>
+</html>
