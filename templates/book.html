@@ -68,6 +68,7 @@
                             connectWallet.removeEventListener('click', connectWalletWithMetaMask);
                             connectWallet.addEventListener('click', signOutOfMetaMask);
                           } catch (error) {
+
                             console.error(error);
                           }
                         }
@@ -320,3 +321,6 @@
 {% include 'components/footer.html' %}
 </body>
 </html>
+
+
+
