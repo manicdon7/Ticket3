@@ -317,9 +317,9 @@ def save_blog(request):
         print("Transaction hash code : ", tx_receipt,
               'Block number : ', tx_receipt.blockNumber)
 
-        obj = Blog(title=title, description=description, content=content,
-                   categories=Category, blog_profile_img=Thumbnail, Block_chin_blockNo=tx_receipt.blockNumber, trans_detial=tx_receipt)
-        obj.save()
+        # obj = Blog(title=title, description=description, content=content,
+        #            categories=Category, blog_profile_img=Thumbnail, Block_chin_blockNo=tx_receipt.blockNumber, trans_detial=tx_receipt)
+        # obj.save()
 
     return JsonResponse({"result": (json.loads(serialize('json', ["page"])))[0]})
 
