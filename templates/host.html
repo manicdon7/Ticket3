@@ -39,8 +39,72 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
-                        <span>Connect Wallet</span>
+                        <span id="connectWallet" onclick="connectWalletWithMetaMask()">Connect Wallet</span>
                     </button>
+                    <script type="text/javascript">
+                        window.userWalletAddress = null;
+                        const connectWallet = document.getElementById('connectWallet');
+                        const walletAddress = document.getElementById('walletAddress');
+                        const walletBalance = document.getElementById('walletBalance');
+                  
+                        async function connectWalletWithMetaMask() {
+                          if (typeof window.ethereum === 'undefined') {
+                            connectWallet.innerText = 'MetaMask is not installed, please install it';
+                            return;
+                          }
+                  
+                          try {
+                            await window.ethereum.enable(); // Request permission to connect
+                            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                  
+                            if (accounts.length === 0) {
+                              return;
+                            }
+                  
+                            window.userWalletAddress = accounts[0];
+                            walletAddress.innerText = window.userWalletAddress;
+                  
+                            connectWallet.innerText = 'Sign Out';
+                            connectWallet.removeEventListener('click', connectWalletWithMetaMask);
+                            connectWallet.addEventListener('click', signOutOfMetaMask);
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }
+                  
+                        function signOutOfMetaMask() {
+                          window.userWalletAddress = null;
+                          walletAddress.innerText = '';
+                          connectWallet.innerText = 'Connect Wallet';
+                  
+                          connectWallet.removeEventListener('click', signOutOfMetaMask);
+                          connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                        }
+                  
+                        async function checkBalance() {
+                          if (!window.userWalletAddress) {
+                            return;
+                          }
+                  
+                          try {
+                            const balance = await window.ethereum.request({
+                              method: 'eth_getBalance',
+                              params: [window.userWalletAddress, 'latest'],
+                            });
+                  
+                            const etherBalance = parseFloat(window.web3.utils.fromWei(balance, 'ether'));
+                  
+                            walletBalance.innerText = etherBalance;
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }
+                  
+                        window.addEventListener('DOMContentLoaded', () => {
+                          connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                        });
+                  
+                      </script>
                 </div>
             </div>
         </nav>
@@ -65,7 +129,13 @@
             <input type="date" name="date" id="date" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
             <label for="date" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Date</label>
         </div>
+        <div class="relative z-0 w-9/12 mb-6 group">
+            <input type="time" name="time" id="time" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="time" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pl-6">Time</label>
         </div>
+        
+        </div>
+        
         <div class=" pl-44">
         <div class="relative z-0 w-9/12 mb-6 group">
             <input type="text" name="location" id="location" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -135,7 +205,7 @@
                         Hosted
                     </td>
                     <td class="px-6 py-4">
-                        $2999
+                        5Dem
                     </td>
                 <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
@@ -148,7 +218,7 @@
                         Hosted
                     </td>
                     <td class="px-6 py-4">
-                        $1999
+                        3Dem
                     </td>
                 <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
@@ -161,7 +231,7 @@
                         Hosted
                     </td>
                     <td class="px-6 py-4">
-                        $4999
+                        6Dem
                     </td>
                 <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
@@ -174,7 +244,7 @@
                         Hosted
                     </td>
                     <td class="px-6 py-4">
-                        $0.5
+                        2Dem
                     </td>
             </tbody>
         </table>

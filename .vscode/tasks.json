@@ -1,0 +1,123 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: create-private-chain",
+      "command": "neoxp",
+      "type": "shell",
+      "args": [
+        "create",
+        "-f",
+        "test/neoTests.neo-express"
+      ],
+      "group": "set-private-chain",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": []
+    },
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: create-wallet-owner",
+      "command": "neoxp",
+      "type": "shell",
+      "args": [
+        "wallet",
+        "create",
+        "-i",
+        "test/neoTests.neo-express",
+        "owner"
+      ],
+      "group": "set-private-chain",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": [],
+      "dependsOn": "neo: create-private-chain"
+    },
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: create-wallet-alice",
+      "command": "neoxp",
+      "type": "shell",
+      "args": [
+        "wallet",
+        "create",
+        "-i",
+        "test/neoTests.neo-express",
+        "alice"
+      ],
+      "group": "set-private-chain",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": [],
+      "dependsOn": "neo: create-wallet-owner"
+    },
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: create-wallet-bob",
+      "command": "neoxp",
+      "type": "shell",
+      "args": [
+        "wallet",
+        "create",
+        "-i",
+        "test/neoTests.neo-express",
+        "bob"
+      ],
+      "group": "set-private-chain",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": [],
+      "dependsOn": "neo: create-wallet-alice"
+    },
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: transfer-gas-to-wallets",
+      "command": "neoxp",
+      "type": "shell",
+      "args": [
+        "batch",
+        "-i",
+        "test/neoTests.neo-express",
+        "test/setup-test-chain.batch"
+      ],
+      "group": "set-private-chain",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": [],
+      "dependsOn": "neo: create-wallet-bob"
+    },
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/contracts/neo"
+      },
+      "label": "neo: build",
+      "command": "neo3-boa",
+      "type": "shell",
+      "args": [
+        "src/neo_contract.py"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": [],
+      "dependsOn": "neo: transfer-gas-to-wallets"
+    }
+  ]
+}
