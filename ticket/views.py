@@ -322,5 +322,3 @@ def save_blog(request):
         # obj.save()
 
     return JsonResponse({"result": (json.loads(serialize('json', ["page"])))[0]})
-
-
