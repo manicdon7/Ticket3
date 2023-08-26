@@ -53,8 +53,7 @@
                                 connectWallet.innerText = 'MetaMask is not installed, please install it';
                                 return;
                               }
-                
-                              
+                      
                               try {
                                 await window.ethereum.enable(); // Request permission to connect
                                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -113,7 +112,7 @@
         </div>
 
         <div>
-            <div class=" flex">
+            <div class="flex pt-10">
                 <div class=" pl-16 pt-28 text-6xl font-bold font-serif leading-relaxed text-white">
                     Welcome to the <span class=" text-7xl" style="color: rgb(99 102 241);">DEMA</span>
                     <div class=" text-lg"> 
@@ -123,7 +122,7 @@
                         This platform allows to book tickets for the events without any frauding done and have a safe transaction.
                     </div>
                 </div>
-                <img class=" w-1/2 pl-10" src="C:/Users/manic/OneDrive/Desktop/ticket3/templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c.png" alt="image"/>
+                <img class=" w-1/2 pl-10 h-96 pr-40" src="templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c (1).png" alt="image">
             </div>
         </div>
 
