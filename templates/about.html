@@ -39,14 +39,78 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
-                        <span>Connect Wallet</span>
+                        <span id="connectWallet" onclick="connectWalletWithMetaMask()">Connect Wallet</span>
                     </button>
+                    <script type="text/javascript">
+                        window.userWalletAddress = null;
+                        const connectWallet = document.getElementById('connectWallet');
+                        const walletAddress = document.getElementById('walletAddress');
+                        const walletBalance = document.getElementById('walletBalance');
+                  
+                        async function connectWalletWithMetaMask() {
+                          if (typeof window.ethereum === 'undefined') {
+                            connectWallet.innerText = 'MetaMask is not installed, please install it';
+                            return;
+                          }
+                  
+                          try {
+                            await window.ethereum.enable(); // Request permission to connect
+                            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                  
+                            if (accounts.length === 0) {
+                              return;
+                            }
+                  
+                            window.userWalletAddress = accounts[0];
+                            walletAddress.innerText = window.userWalletAddress;
+                  
+                            connectWallet.innerText = 'Sign Out';
+                            connectWallet.removeEventListener('click', connectWalletWithMetaMask);
+                            connectWallet.addEventListener('click', signOutOfMetaMask);
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }
+                  
+                        function signOutOfMetaMask() {
+                          window.userWalletAddress = null;
+                          walletAddress.innerText = '';
+                          connectWallet.innerText = 'Connect Wallet';
+                  
+                          connectWallet.removeEventListener('click', signOutOfMetaMask);
+                          connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                        }
+                  
+                        async function checkBalance() {
+                          if (!window.userWalletAddress) {
+                            return;
+                          }
+                  
+                          try {
+                            const balance = await window.ethereum.request({
+                              method: 'eth_getBalance',
+                              params: [window.userWalletAddress, 'latest'],
+                            });
+                  
+                            const etherBalance = parseFloat(window.web3.utils.fromWei(balance, 'ether'));
+                  
+                            walletBalance.innerText = etherBalance;
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }
+                  
+                        window.addEventListener('DOMContentLoaded', () => {
+                          connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                        });
+                  
+                      </script>
                 </div>
             </div>
         </nav>
     </div>
     <div class=" underline text-indigo-500">
-        <h1 class=" text-5xl text-white text-center pt-6 font-serif">About</h1>
+        <h1 class=" text-5xl text-white text-center pt-9 font-serif">About</h1>
     </div>
 
     {% comment %} start form {% endcomment %}
@@ -58,11 +122,35 @@
     <div class=" pt-6">
 
     </div>
-    <div class="text-2xl text-white text-center pl-60 pr-60 font-serif">
+    <div class="text-2xl text-white text-center pt-10 pl-60 pr-60 font-serif">
         "Introducing our innovative platform that empowers hosts to effortlessly create and manage events,
          while providing users with a direct and secure way to book tickets through our decentralized application (dApp).
           By eliminating intermediaries, we are committed to eradicating the black ticket market and ensuring a transparent,
            trustworthy, and convenient experience for both event hosts and attendees."
+    </div>
+    <div class="text-2xl text-white text-center pt-10 pl-60 pr-60 font-serif">
+         <span class="justify-start">Host's Perspective:</span> <br>
+        Effortless Event Creation: Hosts can easily create event listings with event details, ticket types, pricing, and capacity, making event setup streamlined.
+        Complete Control: Hosts retain control over ticket pricing, ensuring fairness and preventing overpricing often seen in secondary markets.
+        Real-time Management: Hosts can manage event details in real-time, allowing adjustments to ticket availability, event schedule, and more.
+        Direct Interaction: Hosts can directly engage with attendees, answer queries, and build a rapport, enhancing the event experience.
+        Verified Audience: The direct booking system reduces the risk of counterfeit tickets, ensuring a verified and authentic audience.
+    </div>
+    <div class="text-2xl text-white text-center pt-10 pl-60 pr-60 font-serif">
+        User's Perspective:
+        Transparent Access: Users can easily browse and discover a variety of events, gaining access to a diverse range of experiences.
+        Secure and Direct Booking: Users can book tickets directly from hosts via the dApp, minimizing the risk of black market ticket sales.
+        Fair Pricing: With direct booking, users are assured of fair pricing as set by the event hosts, eliminating price   gouging.
+        Instant Confirmations: Users receive immediate booking confirmations and digital tickets, enhancing convenience and peace of mind.
+        Verified Transactions: Users can trust that their transactions are secure and transparent due to the blockchain technology.
+    </div>
+    <div class="text-2xl text-white text-center pt-10 pl-60 pr-60 font-serif pb-16">
+        dApp's Perspective:
+        Decentralized Booking: The dApp serves as a direct platform for users to connect with event hosts and book tickets without intermediaries.
+        Secure Transactions: Blockchain technology ensures secure and tamper-proof transactions, safeguarding user and host data.
+        User-Friendly Interface: The dApp provides an intuitive and user-friendly interface for both hosts and users to navigate and operate easily.
+        Immutable Records: All transactions and interactions are recorded on the blockchain, creating a transparent and traceable history.
+        Fraud Prevention: By enabling direct bookings, the dApp significantly reduces the occurrence of fraudulent activities associated with black market ticket sales.
     </div>
 </div>
 {% include 'components/footer.html' %}

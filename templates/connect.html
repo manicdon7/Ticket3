@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaMask Connection Page</title>
+</head>
+<body>
+  <center>
+    <h1>Connect Your MetaMask Wallet Here!</h1>
+    <form>
+      <button id="connectWallet" onclick="connectWalletWithMetaMask()">Connect Wallet</button>
+      <button id="getBalance" onclick="checkBalance()">Get Balance of Wallet</button>
+    </form>
+
+    <p id="walletAddress"></p>
+    <p id="walletBalance"></p>
+
+    <script type="text/javascript">
+      window.userWalletAddress = null;
+      const connectWallet = document.getElementById('connectWallet');
+      const walletAddress = document.getElementById('walletAddress');
+      const walletBalance = document.getElementById('walletBalance');
+
+      async function connectWalletWithMetaMask() {
+        if (typeof window.ethereum === 'undefined') {
+          connectWallet.innerText = 'MetaMask is not installed, please install it';
+          return;
+        }
+
+        try {
+          await window.ethereum.enable(); // Request permission to connect
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+          if (accounts.length === 0) {
+            return;
+          }
+
+          window.userWalletAddress = accounts[0];
+          walletAddress.innerText = window.userWalletAddress;
+
+          connectWallet.innerText = 'Sign Out';
+          connectWallet.removeEventListener('click', connectWalletWithMetaMask);
+          connectWallet.addEventListener('click', signOutOfMetaMask);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      function signOutOfMetaMask() {
+        window.userWalletAddress = null;
+        walletAddress.innerText = '';
+        connectWallet.innerText = 'Connect Wallet';
+
+        connectWallet.removeEventListener('click', signOutOfMetaMask);
+        connectWallet.addEventListener('click', connectWalletWithMetaMask);
+      }
+
+      async function checkBalance() {
+        if (!window.userWalletAddress) {
+          return;
+        }
+
+        try {
+          const balance = await window.ethereum.request({
+            method: 'eth_getBalance',
+            params: [window.userWalletAddress, 'latest'],
+          });
+
+          const etherBalance = parseFloat(window.web3.utils.fromWei(balance, 'ether'));
+
+          walletBalance.innerText = etherBalance;
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        connectWallet.addEventListener('click', connectWalletWithMetaMask);
+      });
+
+    </script>
+  </center>
+</body>
+</html>
