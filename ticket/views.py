@@ -64,5 +64,5 @@ def host(request):
     return render(request, "host.html")
 
 def event_detail(request):
-    return render(request,'event_detail.html')
+    return render(request,"event_detail.html")
     
