@@ -20,11 +20,7 @@
                 <!-- Logo -->
                 <div class="text-indigo-500 md:order-1">
                     <!-- Heroicon - Chip Outline -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                    </svg>
+                    <img class="h-40 w-40 pt-3 justify-start" src="https://github.com/manicdon7/Ticket3/blob/main/templates/images/logo_22-removebg-preview.png?raw=true" alt="logo">
                 </div>
                 <div class="text-gray-500 order-3 w-full pl-16 md:w-auto md:order-2">
                     <ul class="flex font-semibold justify-between text-white">
@@ -33,7 +29,7 @@
                         <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../index">Home</a></li>
                         <li class="md:px-4 md:py-2 text-indigo-500"><a href="#">Dashboard</a></li>
                         <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Host">Host</a></li>
-                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Host">Book</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../Book">Book</a></li>
                         <li class="md:px-4 md:py-2 hover:text-indigo-600"><a href="../About">About</a></li>
                     </ul>
                 </div>
@@ -113,14 +109,14 @@
             </div>
         </nav>
     </div>
-    <div class=" underline text-indigo-500">
-        <h1 class=" text-5xl text-white text-center pt-6 font-serif">Dashboard</h1>
+    <div class="  text-indigo-500">
+        <h1 class=" text-5xl text-white font-bold  text-center pt-6 ">Dashboard</h1>
     </div>
-    <div class=" grid grid-cols-2">
-        <div class="text-white text-xl first-letter: pt-16 font-serif flex justify-center">
+    {% comment %} <div class=" grid grid-cols-2">
+        <div class="text-white text-xl first-letter: pt-16   flex justify-center">
             Your Tokens
         </div>
-        <div class="text-white text-xl first-letter: pt-16 font-serif flex justify-center">
+        <div class="text-white text-xl first-letter: pt-16   flex justify-center">
             Amount in INR
         </div>
     </div>
@@ -144,11 +140,11 @@
 
     <div class=" text-white text-center pt-28 text-4xl underline">
         History
-    </div>
+    </div> {% endcomment %}
     <!-- Start of the Table -->
     
     
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-20">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-12">
         <!-- Search Bar Start -->
         <form>   
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
