@@ -11,6 +11,6 @@ urlpatterns = [
     path('Book/',views.book, name='Book'),
     path('About/',views.about, name='About'),
     path('Booking/',views.booking, name='Booking'),
-    # path('event_detail/', views.event_detail,name='event_detail')
+    path('event_detail/', views.event_detail,name='event_detail')
     
 ]
