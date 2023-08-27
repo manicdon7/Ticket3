@@ -13,18 +13,14 @@
   <script>
     AOS.init();
   </script>
-    <div class="bg-gradient-to-tr from-gray-700 via-gray-900 to-black">
+    <div class="bg-gradient-to-r from-gray-700 via-gray-900 to-black">
         <div>
-            <nav class=" shadow-gray-300 w-100 px-10 md:px-auto sticky font-serif" >
+            <nav class=" shadow-gray-300 w-100 px-10 md:px-auto sticky " >
                 <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
                     <!-- Logo -->
                     <div class="text-indigo-500 md:order-1">
                         <!-- Heroicon - Chip Outline -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                        </svg>
+                        <img src="./images/logo1-removebg-preview.png" alt="logo">
                     </div>
                     <div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
                         <ul class="flex font-semibold justify-between text-white">
@@ -38,15 +34,15 @@
                         </ul>
                     </div>
                     <div class="order-2 md:order-3">
+                        {% csrf_token %}
                         <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-gray-50 rounded-xl flex items-center gap-2">
                             <!-- Heroicons - Login Solid -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
                             </svg>
-                            <span  id="connectWallet" onclick="connectWalletWithMetaMask()">Connect Wallet</span>
+                            <span id="connectWallet" onclick="connectWalletWithMetaMask()">Connect Wallet</span>
                         </button>
-                      
-                          <script type="text/javascript">
+                        <script type="text/javascript">
                             window.userWalletAddress = null;
                             const connectWallet = document.getElementById('connectWallet');
                             const walletAddress = document.getElementById('walletAddress');
@@ -59,7 +55,7 @@
                               }
                       
                               try {
-                                await window.ethereum.enable(); // Request permission to connect
+                                await window.ethereum.enable();
                                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                       
                                 if (accounts.length === 0) {
@@ -114,38 +110,47 @@
                 </div>
             </nav>
         </div>
-
-        <div>
+        <div class="pl-10">
             <div class="flex pt-10" data-aos="fade-up">
-                <div class=" pl-16 pt-28 text-6xl font-bold font-serif leading-relaxed text-white">
+                <div class=" pl-16 pt-28 text-6xl font-bold  leading-relaxed text-white">
                     Welcome to the <span class=" text-7xl" style="color: rgb(99 102 241);">DEMA</span>
-                    <div class=" text-lg"> 
-                        ━  <span class=" text-indigo-500 text-2xl">D</span>ecentralized <span class=" text-indigo-500 text-2xl">E</span>vent <span class=" text-indigo-500 text-2xl">M</span>anagement <span class=" text-indigo-500 text-2xl">A</span>pplication
+                    <div class=" text-lg items-center justify-center"> 
+                        <span>"Introducing our <span style="color: rgb(99 102 241);" >Innovative Platform</span> 
+                             that empowers hosts to <span style="color: rgb(99 102 241);">Effortlessly </span> <br>
+                             <span style="color: rgb(99 102 241);">create </span> and <span style="color: rgb(99 102 241);" >manage</span> events, while providing 
+                             users with a <span style="color: rgb(99 102 241);"> direct </span> and <span style="color: rgb(99 102 241);">secure way</span> to <br>
+                             book tickets through <span style="color: rgb(99 102 241);">Our Decentralized 
+                              Application (dApp)</span>. By eliminating <br>
+                              intermediaries, we are committed to 
+                              eradicating <span style="color: rgb(99 102 241);"> the black ticket market </span> <br> 
+                               and ensuring a <span style="color: rgb(99 102 241);">transparent, trustworthy,
+                                and convenient experience</span> for both event <br>
+                                <span style="color: rgb(99 102 241);"> Hosts and Attendees</span>"</span>
                     </div>
-                    <div class="font-serif text-2xl pt-12">
-                        This platform allows to book tickets for the events without any frauding done and have a safe transaction.
+                    <div class=" text-2xl pt-12">
+                        This platform allows to book tickets for the events without any frauding done and have <span  style="color: rgb(99 102 241);">a safe transaction</span>.
                     </div>
                 </div>
-                <img class=" w-1/2 pl-10 h-96 pr-40" src="templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c (1).png" alt="image">
+                <img class=" w-1/2 pl-10 h-96 pr-40" src="./images/logo1-removebg-preview.png" alt="image">
             </div>
         </div>
 
-        <div class=" pt-6 font-serif pl-16 text-white">
-            <div class=" text-center underline text-6xl pb-5">
-                The main motive of the Ticket3 are:
+        <div class=" pt-10  pl-16 text-white" data-aos="fade-up">
+            <div class=" text-center font-extrabold text-6xl pb-5">
+                The main motive of the <span  style="color: rgb(99 102 241);">Ticket3</span> are:
             </div>
         </div>
 
-        <div class=" pt-6 pl-10 pb-14 flex gap-5">
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class=" pt-6 pl-10  pb-14 flex justify-center gap-5" data-aos="fade-up">
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800  dark:border-gray-700 ">
                 <a href="#">
-                    <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+                    <img class="rounded-t-lg" src="../templates/images/templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c (1).png" alt="" />
                 </a>
-                <div class="p-5">
+                <div class="p-5  ">
                     <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Reduction of Black Tickect</h5>
+                        <h5 class="mb-2 text-2xl  font-bold tracking-tight text-gray-900 dark:text-white hover:scale-125 transition-transform duration-300">Reduction of Black Ticket</h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 pt-6 pb-6">The tickets that are sold as black for higher cost is reduced in this site.</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 pt-6 hover:scale-125 transition-transform duration-300 pb-6">The tickets that are sold as black for higher cost is reduced in this site.</p>
                     <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-indigo-500 hover:text-indigo-500 ">
                         Read more
                         <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -190,7 +195,7 @@
                 </div>
             </div>
         </div>
-        <div class=" pl-10 pb-14 flex gap-5">
+        <div class=" pl-10 pb-14 flex justify-center gap-5" data-aos="fade-up">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
