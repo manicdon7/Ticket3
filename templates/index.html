@@ -20,7 +20,7 @@
                     <!-- Logo -->
                     <div class="text-indigo-500 md:order-1">
                         <!-- Heroicon - Chip Outline -->
-                        <img src="./images/logo1-removebg-preview.png" alt="logo">
+                        <img class="h-40 w-40 pt-3 justify-start" src="https://github.com/manicdon7/Ticket3/blob/main/templates/images/logo_22-removebg-preview.png?raw=true" alt="logo">
                     </div>
                     <div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
                         <ul class="flex font-semibold justify-between text-white">
@@ -47,65 +47,65 @@
                             const connectWallet = document.getElementById('connectWallet');
                             const walletAddress = document.getElementById('walletAddress');
                             const walletBalance = document.getElementById('walletBalance');
-                      
+                        
                             async function connectWalletWithMetaMask() {
-                              if (typeof window.ethereum === 'undefined') {
-                                connectWallet.innerText = 'MetaMask is not installed, please install it';
-                                return;
-                              }
-                      
-                              try {
-                                await window.ethereum.enable();
-                                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                      
-                                if (accounts.length === 0) {
-                                  return;
+                                if (typeof window.ethereum === 'undefined') {
+                                    connectWallet.innerText = 'MetaMask is not installed, please install it';
+                                    return;
                                 }
-                      
-                                window.userWalletAddress = accounts[0];
-                                walletAddress.innerText = window.userWalletAddress;
-                      
-                                connectWallet.innerText = 'Sign Out';
-                                connectWallet.removeEventListener('click', connectWalletWithMetaMask);
-                                connectWallet.addEventListener('click', signOutOfMetaMask);
-                              } catch (error) {
-                                console.error(error);
-                              }
+                        
+                                try {
+                                    await window.ethereum.enable();
+                                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        
+                                    if (accounts.length === 0) {
+                                        return;
+                                    }
+                        
+                                    window.userWalletAddress = accounts[0];
+                                    walletAddress.innerText = window.userWalletAddress;
+                        
+                                    connectWallet.innerText = 'Connected'; // Change the button message to "Connected"
+                                    connectWallet.removeEventListener('click', connectWalletWithMetaMask);
+                                    connectWallet.addEventListener('click', signOutOfMetaMask);
+                                } catch (error) {
+                                    console.error(error);
+                                }
                             }
-                      
+                        
                             function signOutOfMetaMask() {
-                              window.userWalletAddress = null;
-                              walletAddress.innerText = '';
-                              connectWallet.innerText = 'Connect Wallet';
-                      
-                              connectWallet.removeEventListener('click', signOutOfMetaMask);
-                              connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                                window.userWalletAddress = null;
+                                walletAddress.innerText = '';
+                                connectWallet.innerText = 'Connect Wallet';
+                        
+                                connectWallet.removeEventListener('click', signOutOfMetaMask);
+                                connectWallet.addEventListener('click', connectWalletWithMetaMask);
                             }
-                      
+                        
                             async function checkBalance() {
-                              if (!window.userWalletAddress) {
-                                return;
-                              }
-                      
-                              try {
-                                const balance = await window.ethereum.request({
-                                  method: 'eth_getBalance',
-                                  params: [window.userWalletAddress, 'latest'],
-                                });
-                      
-                                const etherBalance = parseFloat(window.web3.utils.fromWei(balance, 'ether'));
-                      
-                                walletBalance.innerText = etherBalance;
-                              } catch (error) {
-                                console.error(error);
-                              }
+                                if (!window.userWalletAddress) {
+                                    return;
+                                }
+                        
+                                try {
+                                    const balance = await window.ethereum.request({
+                                        method: 'eth_getBalance',
+                                        params: [window.userWalletAddress, 'latest'],
+                                    });
+                        
+                                    const etherBalance = parseFloat(window.web3.utils.fromWei(balance, 'ether'));
+                        
+                                    walletBalance.innerText = etherBalance;
+                                } catch (error) {
+                                    console.error(error);
+                                }
                             }
-                      
+                        
                             window.addEventListener('DOMContentLoaded', () => {
-                              connectWallet.addEventListener('click', connectWalletWithMetaMask);
+                                connectWallet.addEventListener('click', connectWalletWithMetaMask);
                             });
-                      
-                          </script>
+                        
+                        </script>
                     </div>
                 </div>
             </nav>
@@ -131,7 +131,7 @@
                         This platform allows to book tickets for the events without any frauding done and have <span  style="color: rgb(99 102 241);">a safe transaction</span>.
                     </div>
                 </div>
-                <img class=" w-1/2 pl-10 h-96 pr-40" src="./images/logo1-removebg-preview.png" alt="image">
+                <img class=" w-1/2 pl-10 pt-24 h-96 pr-40" src="https://github.com/manicdon7/Ticket3/blob/main/templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c%20(1).png?raw=true" alt="image">
             </div>
         </div>
 
@@ -144,7 +144,7 @@
         <div class=" pt-6 pl-10  pb-14 flex justify-center gap-5" data-aos="fade-up">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800  dark:border-gray-700 ">
                 <a href="#">
-                    <img class="rounded-t-lg" src="../templates/images/templates/images/5387c8a2-5657-4ce3-8d9d-f89266c9b43c (1).png" alt="" />
+                    <img class="rounded-t-lg" src="" alt="" />
                 </a>
                 <div class="p-5  ">
                     <a href="#">
