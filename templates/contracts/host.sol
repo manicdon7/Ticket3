@@ -11,6 +11,8 @@ contract EventContract {
         uint256 ticketPrice;
     }
 
+    uint256 public conversionRate = 100; // 1 DEM = 100 units
+
     Event[] public events;
 
     function createEvent(
@@ -86,27 +88,27 @@ contract EventContract {
     }
 
     function buyTicket(
-    uint256 _eventId,
-    address payable _destinationWallet,
-    uint256 _numTickets
-) external payable {
-    require(_eventId < events.length, "Event does not exist");
-    Event storage eventDetails = events[_eventId];
-    require(_numTickets > 0, "Number of tickets must be greater than 0");
-    require(_numTickets <= eventDetails.totalTickets, "Not enough tickets available");
-    require(msg.value >= eventDetails.ticketPrice * _numTickets, "Insufficient payment");
+        uint256 _eventId,
+        address payable _destinationWallet,
+        uint256 _numTickets
+    ) external payable {
+        require(_eventId < events.length, "Event does not exist");
+        Event storage eventDetails = events[_eventId];
+        require(_numTickets > 0, "Number of tickets must be greater than 0");
+        require(_numTickets <= eventDetails.totalTickets, "Not enough tickets available");
+        require(msg.value >= eventDetails.ticketPrice * _numTickets * conversionRate, "Insufficient payment");
 
-    eventDetails.totalTickets -= _numTickets;
-    uint256 remainingTickets = eventDetails.totalTickets;
+        eventDetails.totalTickets -= _numTickets;
+        uint256 remainingTickets = eventDetails.totalTickets;
 
-    // Optionally, you can implement logic to refund excess payment to the sender.
 
-    // Emit an event to log the ticket purchase.
-    emit TicketPurchased(_eventId, msg.sender, remainingTickets);
 
-    // Transfer the payment directly to the specified destination wallet.
-    _destinationWallet.transfer(eventDetails.ticketPrice * _numTickets);
-}
+        emit TicketPurchased(_eventId, msg.sender, remainingTickets);
+
+
+        _destinationWallet.transfer(eventDetails.ticketPrice * _numTickets * conversionRate);
+    }
+
 
 
     event TicketPurchased(uint256 indexed eventId, address indexed buyer, uint256 remainingTickets);

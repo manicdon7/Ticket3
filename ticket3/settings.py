@@ -117,6 +117,9 @@ USE_TZ = True
 
 import os
 
+my_address= '0xb07d0Af83889b79515009dD130eF7c14EEeF9a5B'
+private_key = '9df0f165de14ab2729bd5fcdb58dfbb3ec6131efc979068da4548d4ef2cb8b9a'
+
 STATIC_URL = 'templates/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'templates'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'templates')
@@ -124,7 +127,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'templates')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/')
 MEDIA_URL = '/media/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
