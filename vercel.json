@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "ticket3/wsgi.py",
+      "src": "None/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -24,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "ticket3/wsgi.py"
+      "dest": "None/wsgi.py"
     }
   ]
 }
