@@ -54,7 +54,7 @@
                           }
                   
                           try {
-                            await window.ethereum.enable(); // Request permission to connect
+                            await window.ethereum.enable(); 
                             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                   
                             if (accounts.length === 0) {
@@ -152,7 +152,15 @@
     <div class=" pl-44">
         <a href="./event_detail.html" ><button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="check()">Host</button></a>
     </div>
-  
+    <script>
+        function check() {
+            if (window.userWalletAddress) {
+                walletAddress(window.userWalletAddress);
+            } else {
+                connectWalletWithMetaMask();
+            }
+        }
+    </script>
 
     <div class=" text-white text-center font-extrabold uppercase pt-28 text-5xl ">
         Hosted Events

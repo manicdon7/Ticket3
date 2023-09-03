@@ -40,27 +40,31 @@ def host(request):
 
         print("transaction success")
 
-        greeting_transaction = simple_storage.functions.createEvent(
-            name,location, date, time, total_tickets, ticket_price
-        ).buildTransaction(
-            {
-                "chainId": w3.eth.chain_id,
-                "gas": 700000,
-                "gasPrice": w3.eth.gas_price,
-                "from": my_address,
-                "nonce": nonce + 1,
-            }
-        )
+        try:
+            # Create a transaction to interact with the contract
+            greeting_transaction = simple_storage.functions.createEvent(
+                name, location, date, time, total_tickets, ticket_price
+            ).buildTransaction(
+                {
+                    "chainId": w3.eth.chain_id,
+                    "gas": 700000,
+                    "gasPrice": w3.eth.gas_price,
+                    "from": my_address,
+                    "nonce": nonce + 1,
+                }
+            )
 
-        # Wait for the transaction to be mined
-        signed_txn = w3.eth.account.sign_transaction(greeting_transaction, private_key=private_key)
+            # Sign the transaction
+            signed_txn = w3.eth.account.sign_transaction(greeting_transaction, private_key=private_key)
 
-        # send the signed transaction to the network
-        tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+            # Send the signed transaction to the network
+            tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
-        # get the transaction receipt
-        tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-        print(tx_receipt.get('transactionHash'))
+            # Wait for the transaction to be mined
+            tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+            print(tx_receipt.get('transactionHash'))
+        except Exception as e:
+            print(f"Error: {e}")
     return render(request, "host.html")
 
 def event_detail(request):
