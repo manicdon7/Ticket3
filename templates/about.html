@@ -52,7 +52,7 @@
                             connectWallet.innerText = 'MetaMask is not installed, please install it';
                             return;
                           }
-                  
+
                           try {
                             await window.ethereum.enable(); // Request permission to connect
                             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
